@@ -15,18 +15,13 @@ public class User
 {
     @Id
     String id;
-
     String name;
-
     String lastName;
 
     @Indexed( unique = true )
     String email;
-
     String passwordHash;
-
     List<RoleEnum> roles;
-
     Date createdAt;
 
     public User()

@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceMongoDB
-    implements UserService
+public class UserServiceMongoDB implements UserService
 {
 
     private final UserRepository userRepository;
@@ -79,9 +78,11 @@ public class UserServiceMongoDB
     {
         if ( userRepository.findById( id ).isPresent() )
         {
-            User user = userRepository.findById( id ).get();
+            User user = userRepository.findById( id ).get(); //Usamos el findById debido a que la DB no está en memoria sino en la nube en este caso.
+            // En caso contrario si la lista está en la RAM podemos solo llamar get.
             user.update( userDto );
-            userRepository.save( user );
+            userRepository.save( user ); // Esto lo usamos si estamos almacenandolo en una base de datos.
+            // En el caso de que lo estemos almacenando en memoria entonces no hace falta escribir esta linea.
             return user;
         }
         return null;

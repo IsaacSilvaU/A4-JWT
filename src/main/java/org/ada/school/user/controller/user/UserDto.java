@@ -3,11 +3,8 @@ package org.ada.school.user.controller.user;
 public class UserDto
 {
     String name;
-
     String lastName;
-
     String email;
-
     String password;
 
     public UserDto()
