@@ -65,6 +65,9 @@ public class UserServiceMongoDB implements UserService
     @Override
     public boolean deleteById( String id )
     {
+        System.out.println(userRepository.findById( id ).isPresent());
+        System.out.println(userRepository.existsById( id ));
+        //if ( userRepository.findById( id ).isPresent() )
         if ( userRepository.existsById( id ) )
         {
             userRepository.deleteById( id );
